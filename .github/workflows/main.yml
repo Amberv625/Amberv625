@@ -1,0 +1,54 @@
+2156688204
+IOS= 16.5.1(c)
+serial=FGQTQWQ5FK
+model number = MLUO3LL/A{
+
+  public static void main(String[] args) {
+    Shape shape = new Dotted(new Red(new Circle()));
+    shape.draw(); // -> dotted red circle
+    System.out.println();
+  }
+}
+
+interface Shape {
+
+  void draw();
+}
+
+Circle implements Shape {
+
+  @Override
+  public void draw() {
+     System.out.print("circle");
+  }
+}
+
+Red implements Shape {
+
+  Shape delegate;
+
+  Red(Shape delegate) {
+    this.delegate = delegate;
+  }
+
+  @Override
+  public void draw() {
+    System.out.print("red ");
+    delegate.draw();
+  }
+}
+
+Dotted implements Shape {
+
+  Shape delegate;
+
+  Dotted(Shape delegate) {
+    this.delegate = delegate;
+  }
+
+  @Override
+  public void draw() {
+    System.out.print("dotted ");
+    delegate.draw();
+  }
+}
